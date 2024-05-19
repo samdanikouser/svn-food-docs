@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <a href="javascript:history.back()">Go Back</a>
+
+<div class="container text-center" style="margin-bottom: 20px;">
+        <h1>HACCP</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                            <p>Select the Location</p>
+                <a href="{% url 'back_burner' %}" class="btn btn-success btn-block">BACK BURNER</a>
+                <a href="{% url 'beach_kitchen' %}" class="btn btn-success btn-block">BEACH KITCHEN</a>
+                <a href="{% url 'santolina_kitchen' %}" class="btn btn-success btn-block">SANTOLINA KITCHEN</a>
+                <a href="{% url 'santolina_restaurant' %}" class="btn btn-success btn-block">SANTOLINA RESTAURANT</a>
+                <a href="{% url 'basement_kitchen' %}" class="btn btn-success btn-block">BASEMENT KITCHEN</a>
+                <a href="{% url 'backery_kitchen' %}" class="btn btn-success btn-block">BACKERY KITCHEN</a>
+                <a href="{% url 'pastry_kitchen' %}" class="btn btn-success btn-block">PASTRY KITCHEN</a>
+            </div>
+        </div>
+    </div>
+<div >
+
+    <a href="{% url 'logout' %}" class="btn btn-danger btn-block" >Logout</a>
+            </div>
+{% endblock %}
+

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="col-md-6 text-center">
+        <div class="row justify-content-center">
+                <h2>Welcome to SVN Kuwait, {{ user.username }}!</h2>
+            <div class="col-md-4 col-sm-6">
+                <a href="{% url 'haccphome' %}" class="btn btn-success btn-block">HACCP</a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="{% url 'haccphome' %}" class="btn btn-success btn-block">STEWARDING</a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="{% url 'haccphome' %}" class="btn btn-success btn-block">INTERNAL ORDERS</a>
+            </div>
+                <div class="col-md-4 text-center">
+            <a href="{% url 'logout' %}" class="btn btn-danger btn-block">Logout</a>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
