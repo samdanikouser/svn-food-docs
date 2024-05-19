@@ -1,5 +1,5 @@
 """
-WSGI config for svn_food_docs project.
+WSGI config for svn-food-docs project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'svn_food_docs.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'svn-food-docs.settings')
 
 application = get_wsgi_application()

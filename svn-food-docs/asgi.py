@@ -1,5 +1,5 @@
 """
-ASGI config for svn_food_docs project.
+ASGI config for svn-food-docs project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'svn_food_docs.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'svn-food-docs.settings')
 
 application = get_asgi_application()
