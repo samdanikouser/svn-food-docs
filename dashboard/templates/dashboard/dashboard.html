@@ -1,0 +1,20 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+{% if messages %}
+    <div id="popup-message" style="display:none;">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            alert($('#popup-message').text());
+        });
+    </script>
+{% endif %}
+    <h2 style="text-align:center;font-family:Monospace" >Hi {{ user.username }} ,Welcome to food docs of SVN Kuwait!</h2>
+
+{% endblock %}

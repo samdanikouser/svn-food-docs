@@ -1,0 +1,45 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+<section class="intro">
+    <div class="h-100">
+        <div>
+            <a href="{% url 'add_action' %}" class="btn btn-primary btn-sm" style="font-family:Monospace">Add Action</a>
+            <div class=" text-center ">
+                <h1 style="font-family:Monospace">Action</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <div class="table-responsive bg-white">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">S.NO.</th>
+                                <th scope="col">NAME</th>
+                                <th scope="col">STATUS</th>
+                                <th scope="col">ACTION</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for act in action %}
+                            <tr>
+                                <td style="color:black">{{forloop.counter}}</td>
+                                <td style="color:black">{{act.name}}</td>
+                                <td><input type="checkbox" disabled id="toggle{{ act.id }}" {% if act.status %}checked{% endif %}></td>
+                                <td>
+                                    <a href="/action/delete/{{act.id}}"
+                                       class="btn btn-danger btn-sm">Delete</a>
+                                    <a href="/action/update/{{act.id}}"
+                                       class="btn btn-success btn-sm">Update</a>
+                                </td>
+                            </tr>
+                            {%endfor%}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

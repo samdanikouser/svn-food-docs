@@ -1,0 +1,169 @@
+<div class="form-group">
+    <label for="taskName">Task Name</label>
+    <input type="text" class="form-control" id="taskName" name="taskName" placeholder="Enter Task">
+</div>
+<hr>
+<div class="space-related-in border-radius-lg shadow">
+    <h5 class="mt-5" style="font-family:Monospace;text-align: center;padding-top:20px; color: #007bff;">Used For</h5>
+    <div class="row" style="padding: 10px;">
+        <div class="col">
+            <div class="form-group">
+                <label for="used_for">Used for:</label>
+                <input type="text" id="used_for" name="used_for" placeholder="Enter Common name" class="form-control">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="numberofusedfor">Number of used for: </label>
+                <input type="number" id="numberofusedfor" name="period" class="form-control"
+                       oninput="generateOnField()">
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="space-related-in border-radius-lg shadow">
+    <h5 class="mt-5" style="font-family:Monospace;text-align: center;padding-top:20px;color: #007bff;">Task Details</h5>
+    <div class="row" style="padding: 10px;">
+        <div class="col">
+            <label>Frequency</label>
+            <select class="form-control" id="exampleDropdown">
+                <option value="annual">Annual</option>
+                <option value="once_a_month">Once a month</option>
+                <option value="once_a_week">Once a week</option>
+                <option value="once_a_day">Once a day</option>
+                <option value="not_specified">Not specified</option>
+                <option value="custom">Custom</option>
+            </select>
+        </div>
+        <div class="col">
+            <label>Assign Task To</label>
+            <select class="form-control">
+                <option value="line_staff">Line Staff</option>
+                <option value="supervisors">Supervisors</option>
+                <option value="managers">Managers</option>
+                <option value="admin">Admin</option>
+                <!-- Add more options as needed -->
+            </select></div>
+    </div>
+    <div class="custom_fields">
+        <div class="row" style="padding: 10px;">
+            <div class="col">
+                <div class="form-group">
+                    <label for="numberInput">Repeat every:</label>
+                    <input type="number" id="numberInput" name="period" class="form-control"
+                           oninput="generateOnField()">
+                </div>
+            </div>
+            <div class="col">
+                <label>Repeat Frequency</label>
+                <select class="form-control" id="repeat_frequency">
+                    <option value="times_a_day">Times a day</option>
+                    <option value="days">Days</option>
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                    <option value="years">Years</option>
+                </select>
+            </div>
+            <div class="col">
+                <p>Repeat on</p>
+                <div class="days">
+                    <button class="day" data-day="Mo">Mo</button>
+                    <button class="day" data-day="Tu">Tu</button>
+                    <button class="day" data-day="We">We</button>
+                    <button class="day" data-day="Th">Th</button>
+                    <button class="day" data-day="Fr">Fr</button>
+                    <button class="day" data-day="Sa">Sa</button>
+                    <button class="day" data-day="Su">Su</button>
+                </div>
+            </div>
+        </div>
+        <div style="padding: 10px;">
+            <div id="fieldsContainer" class="col">
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="space-related-in border-radius-lg shadow">
+    <h5 class="mt-5" style="font-family:Monospace;text-align: center;padding-top:20px;color: #007bff;">Set Temperature</h5>
+    <div class="row" style="padding: 10px;">
+        <div class="col">
+            <label>Min Temperature</label>
+            <input type="text" class="form-control" name="max_value" placeholder="Min Temperature">
+        </div>
+        <div class="col">
+            <label>Max temperature</label>
+            <input type="text" class="form-control" name="min_value" placeholder="Max temperature">
+        </div>
+    </div>
+</div>
+<hr>
+<div class="space-related-in border-radius-lg shadow">
+    <h5 class="mt-5" style="font-family:Monospace;text-align: center;padding-top:20px;color: #007bff;">Corrective actions</h5>
+       <div style="padding: 10px;">
+    <div class="alert alert-success" style="margin: 30px;">
+        <span class="alert-icon">ℹ️</span>
+        <span>The following corrective actions will be shown when a non-compliant value is logged.</span>
+    </div>
+     {% for action in actions %}
+    <div class="form-group" style="margin-left:10px">
+        <input style="margin-right:10px" type="checkbox" id="option{{ action.id }}" name="{{ action.id }}"
+               value="{{ action.name }}">
+        {{ action.name }}
+    </div>
+    {% endfor %}
+       </div>
+</div>
+<hr>
+<div class="space-related-in border-radius-lg shadow">
+    <h5 class="mt-5" style="font-family:Monospace;text-align: center;padding-top:20px;color: #007bff;">Select Verifier</h5>
+       <div style="padding: 10px;">
+            <label>Assign Task To</label>
+            <select class="form-control">
+                <option value="line_staff">Line Staff</option>
+                <option value="supervisors">Supervisors</option>
+                <option value="managers">Managers</option>
+                <option value="admin">Admin</option>
+                <!-- Add more options as needed -->
+            </select>
+    </div>
+</div>
+
+<button type="submit" class="btn btn-primary btn-lg btn-block" style="padding: 10px;margin-top: 20px;">Confirm
+</button>
+<script>
+    function generateOnField() {
+        // Get the number from the input box
+        let numberOfFields = document.getElementById('numberInput').value;
+
+        // Get the container where the fields will be added
+        let container = document.getElementById('fieldsContainer');
+
+        // Clear any existing fields
+        container.innerHTML = '';
+
+        // Add the specified number of fields
+        for (let i = 0; i < numberOfFields; i++) {
+            // Create a new div for each label and input pair
+            let fieldWrapper = document.createElement('div');
+            fieldWrapper.className = 'form-group';
+
+            // Create a new label
+            let label = document.createElement('label');
+            label.innerText = `ON${i + 1}`;
+            fieldWrapper.appendChild(label);
+
+            // Create a new input
+            let input = document.createElement('input');
+            input.type = 'time';
+            input.className = 'form-control';
+            input.name = `on_${i + 1}`;
+            input.placeholder = `Enter time ${i + 1}`;
+            fieldWrapper.appendChild(input);
+
+            // Append the new field wrapper to the container
+            container.appendChild(fieldWrapper);
+        }
+    }
+</script>

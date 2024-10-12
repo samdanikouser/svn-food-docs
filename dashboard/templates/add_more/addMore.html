@@ -1,0 +1,14 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2 style="font-family:Monospace">Add More</h2>
+<a href="{% url 'locationlist' %}" class="btn btn-outline-info btn-lg btn-block"
+   style="font-family:Monospace">Location</a>
+<a href="{% url 'register' %}" class="btn btn-outline-info btn-lg btn-block"
+   style="font-family:Monospace">User</a>
+<a href="{% url 'action_list' %}" class="btn btn-outline-info btn-lg btn-block"
+   style="font-family:Monospace">Corrective Action</a>
+
+{% endblock %}

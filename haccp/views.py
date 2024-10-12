@@ -1,36 +1,24 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from location.models import Location
+from correctiveaction.models import CorrectiveAction
+from roles.models import Roles
+from haccp.models import HaccpAdminData
 
 
 @login_required
 # Create your views here.
-def haccphome(request):
-    return render(request, 'haccphome.html')
+def haccphome(request,name):
+    locations= Location.objects.all()
+    return render(request, 'haccphome.html',{"name":name,"locations":locations})
 
+def storagelocation(request,name , status):
+    locations= Location.objects.all()
+    actions= CorrectiveAction.objects.all()
+    roles = Roles.objects.all()
+    return render(request, 'storageName/storageData.html',{"actions":actions,"roles":roles,"name":name,"status":status,"locations":locations})
 
-def backBurner(request):
-    return render(request, 'backBurner.html')
+def storagelocationAdminData(request,name,status):
+    locations = Location.objects.all()
+    return render(request, 'storageName/storageData.html',{"locations":locations,"status":status,"name":name})
 
-
-def beachKitchen(request):
-    return render(request, 'beachKitchen.html')
-
-
-def santolinaKitchen(request):
-    return render(request, 'santolinaKitchen.html')
-
-
-def santolinaRestaurant(request):
-    return render(request, 'santolinaRestaurant.html')
-
-
-def basementKitchen(request):
-    return render(request, 'basementKitchen.html')
-
-
-def backeryKitchen(request):
-    return render(request, 'backeryKitchen.html')
-
-
-def pastryKitchen(request):
-    return render(request, 'pastryKitchen.html')

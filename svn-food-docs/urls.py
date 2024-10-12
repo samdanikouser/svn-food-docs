@@ -20,5 +20,12 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('loginReg.urls')),
-    path('haccp',include('haccp.urls'))
+    path('haccp',include('haccp.urls')),
+    path('location', include('location.urls')),
+    path('action', include('correctiveaction.urls')),
+    path('role', include('roles.urls')),
+    path('add', include('dashboard.urls'))
+
 ]
+
+

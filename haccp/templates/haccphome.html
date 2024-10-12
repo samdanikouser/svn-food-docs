@@ -1,28 +1,22 @@
-{% extends 'base.html' %}
+{% extends "dashboard/base.html" %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <a href="javascript:history.back()">Go Back</a>
+<a href="javascript:history.back()"> Back</a>
 
-<div class="container text-center" style="margin-bottom: 20px;">
-        <h1>HACCP</h1>
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                            <p>Select the Location</p>
-                <a href="{% url 'back_burner' %}" class="btn btn-success btn-block">BACK BURNER</a>
-                <a href="{% url 'beach_kitchen' %}" class="btn btn-success btn-block">BEACH KITCHEN</a>
-                <a href="{% url 'santolina_kitchen' %}" class="btn btn-success btn-block">SANTOLINA KITCHEN</a>
-                <a href="{% url 'santolina_restaurant' %}" class="btn btn-success btn-block">SANTOLINA RESTAURANT</a>
-                <a href="{% url 'basement_kitchen' %}" class="btn btn-success btn-block">BASEMENT KITCHEN</a>
-                <a href="{% url 'backery_kitchen' %}" class="btn btn-success btn-block">BACKERY KITCHEN</a>
-                <a href="{% url 'pastry_kitchen' %}" class="btn btn-success btn-block">PASTRY KITCHEN</a>
-            </div>
+<div class="text-center" style="margin-bottom: 20px;">
+    <h1 style="font-family:Monospace">{{name}}</h1>
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <a href="{% url 'storage_location' name 'Fridge' %}" class="btn btn-outline-info btn-block" style="font-family:Monospace">Fridge</a>
+            <a href="{% url 'storage_location' name 'Freezer' %}" class="btn btn-outline-info btn-block" style="font-family:Monospace">Freezer</a>
+            <a href="{% url 'storage_location' name 'Cooking' %}" class="btn btn-outline-info btn-block" style="font-family:Monospace">Cooking</a>
+            <a href="{% url 'storage_location' name 'Cooling' %}" class="btn btn-outline-info btn-block" style="font-family:Monospace">Cooling</a>
+            <a href="{% url 'storage_location' name 'Reheating' %}" class="btn btn-outline-info btn-block" style="font-family:Monospace">Reheating</a>
+            <a href="{% url 'storage_location' name 'Sanitazation' %}" class="btn btn-outline-info btn-block" style="font-family:Monospace">Sanitazation</a>
         </div>
     </div>
-<div >
-
-    <a href="{% url 'logout' %}" class="btn btn-danger btn-block" >Logout</a>
-            </div>
+</div>
 {% endblock %}
 

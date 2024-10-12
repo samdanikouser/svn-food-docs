@@ -1,0 +1,140 @@
+{% block title %}BBCooking{% endblock %}
+{% block content %}
+
+<form action="/haccp/backBurner/cooking" method="post">
+    {% csrf_token %}
+    <div>
+        <label for="backburnerCookingname">Name</label>
+        <input type="text" id="backburnerCookingname" name="backburnerCookingname">
+    </div>
+    <div>
+        <label for="backburnerCookingtemp">Temp(°C)</label>
+        <input type="text" id="backburnerCookingtemp" name="backburnerCookingtemp">
+    </div>
+    <div>
+        <label for="backburnerCookingcorrectiveaction">Corrective Action</label>
+        <input type="text" id="backburnerCookingcorrectiveaction" class="trigger-popup-input" data-title="Popup for Tab 3" data-content="This is the popup content for Tab 3." data-min="11" data-max="20" placeholder="Enter a number between 11 and 20">
+
+    </div>
+    <button class="btn btn-success btn-block" type="submit">Save</button>
+</form>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block content %}
+<html lang="en">
+<head>
+    <style>
+        @media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1500px;
+    }
+    </style>
+   </head>
+<body>
+<form action="/haccp/backBurner/fridge" method="POST">
+    {% csrf_token %}
+    <h5 class="mt-5" style="font-family:Monospace;text-align: center;">Task Details</h5>
+    <div class="row" style="padding: 10px;">
+        <div class="col">
+            <label>Frequency</label>
+            <input type="text" name="Frequency" class="form-control" placeholder="Frequency">
+        </div>
+        <div class="col">
+            <label>Assign Task To</label>
+            <input type="text" class="form-control" name="assign_to" placeholder="Assign Task To">
+        </div>
+    </div>
+    <div class="row" style="padding: 10px;">
+        <div class="col">
+            <label>Set first date</label>
+            <input type="date" class="form-control" name="firstDate" placeholder="Set first date">
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="numberInput">Enter a number(Period):</label>
+                <input type="number" id="numberInput" name="period" class="form-control" oninput="generateFields()">
+            </div>
+        </div>
+        <div class="col">
+            <label>Repeat every</label>
+            <input type="text" class="form-control" name="repeat" placeholder="hours">
+        </div>
+    </div>
+    <div class="row" style="padding: 10px;">
+        <div class="col">
+            <label>Repeat on</label>
+            <input type="text" class="form-control" name="repostOn" placeholder="Frequency">
+        </div>
+        <div class="col">
+            <div id="fieldsContainer" class="mt-3">
+                <!-- Dynamic fields will be added here -->
+            </div>
+        </div>
+    </div>
+    <h5 class="mt-5" style="font-family:Monospace;text-align: center;">Set Temperature</h5>
+    <div class="row" style="padding: 10px;">
+        <div class="col">
+            <label>Min Temperature</label>
+            <input type="text" class="form-control" name="max_value" placeholder="Min Temperature">
+        </div>
+        <div class="col">
+            <label>Max temperature</label>
+            <input type="text" class="form-control" name="min_value" placeholder="Max temperature">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block" style="padding: 10px;margin-top: 20px;">Confirm
+    </button>
+</form>
+
+</body>
+ <script>
+        function generateFields() {
+            // Get the number from the input box
+            let numberOfFields = document.getElementById('numberInput').value;
+
+            // Get the container where the fields will be added
+            let container = document.getElementById('fieldsContainer');
+
+            // Clear any existing fields
+            container.innerHTML = '';
+
+            // Add the specified number of fields
+            for (let i = 0; i < numberOfFields; i++) {
+                // Create a new div for each label and input pair
+                let fieldWrapper = document.createElement('div');
+                fieldWrapper.className = 'form-group';
+
+                // Create a new input
+                let input = document.createElement('input');
+                input.type = 'time';
+                input.className = 'form-control';
+                input.name = `field_${i + 1}`;
+                input.placeholder = `Enter time ${i + 1}`;
+                fieldWrapper.appendChild(input);
+
+                // Append the new field wrapper to the container
+                container.appendChild(fieldWrapper);
+            }
+        }
+    </script>
+
+</html>
+{% endblock %}
+
+
+

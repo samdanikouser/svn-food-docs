@@ -2,13 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('/', views.haccphome, name='haccphome'),
-    path('/backBurner', views.backBurner, name='back_burner'),
-    path('/beachKitchen', views.beachKitchen, name='beach_kitchen'),
-    path('/santolinaKitchen', views.santolinaKitchen, name='santolina_kitchen'),
-    path('/santolinaRestaurant', views.santolinaRestaurant, name='santolina_restaurant'),
-    path('/basementKitchen', views.basementKitchen, name='basement_kitchen'),
-    path('/backeryKitchen', views.backeryKitchen, name='backery_kitchen'),
-    path('/pastryKitchen', views.pastryKitchen, name='pastry_kitchen'),
-
+    path('/<str:name>/', views.haccphome, name='haccp_home'),
+    path('/<str:name>/<str:status>/', views.storagelocation, name='storage_location'),
+    path('/admin/<str:name>/<str:status>/', views.storagelocationAdminData, name='storage_data_admin_data'),
 ]

@@ -1,0 +1,70 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'dashboard/css/styles.css' %}">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 20px;
+              margin-right: 1500px;
+    margin-left: auto;
+        }
+        @media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1500px;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+    </header>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="{% static 'dashboard/images/svnlogo.png' %}" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="{% url 'home' %}" style="font-family:Monospace">OVERVIEW</a></li>
+                 <!-- Dropdown menu trigger -->
+                <li><a href="javascript:void(0)" class="dropdown-btn" style="font-family:Monospace">HACCP &#x25BC</a>
+                    <ul class="dropdown-container" style="display: none;">
+                        {% for location in locations %}
+                        <li><a href="{% url 'haccp_home' location %}" style="font-family:Monospace">{{location}}</a></li>
+                    {% endfor %}
+                    </ul>
+                <li><a href="#" style="font-family:Monospace">STREWARDING</a></li>
+                <li><a href="#" style="font-family:Monospace">INTERNAL ORDERS</a></li>
+                <li><a href="{% url 'add_more' %}" style="font-family:Monospace">ADD MORE</a></li>
+                <li><a href="#" style="font-family:Monospace">HELP</a></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Get all elements with the class 'dropdown-btn'
+let dropdown = document.getElementsByClassName("dropdown-btn");
+
+for (let i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function () {
+        // Toggle between hiding and showing the dropdown content
+        let dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    });
+}
+
+</script>
+</body>
+</html>
