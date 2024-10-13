@@ -30,7 +30,7 @@
             <div class="col">
                 <div class="form-group">
                     <label for="numberofusedfor">Number of used for: </label>
-                    <input type="number" id="numberofusedfor" name="period" class="form-control"
+                    <input type="number" id="numberofusedfor" name="no_of_used_for" class="form-control"
                            oninput="generateOnField()">
                 </div>
             </div>
@@ -44,7 +44,7 @@
             <div class="col">
             <div class="col">
                 <label>Assign Task To</label>
-                <select class="form-control">
+                <select name="assign_task_to" class="form-control">
                     <option value="line_staff">Line Staff</option>
                     <option value="supervisors">Supervisors</option>
                     <option value="managers">Managers</option>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="col">
                     <label>Repeat Frequency</label>
-                    <select class="form-control" id="repeat_frequency">
+                    <select name="repeat_frequency" class="form-control" id="repeat_frequency">
                         <option value="times_a_day">Times a day</option>
                         <option value="days">Days</option>
                         <option value="weeks">Weeks</option>
@@ -103,11 +103,9 @@
                 <span>The following corrective actions will be shown when a non-compliant value is logged.</span>
             </div>
             {% for action in actions %}
-            <div class="form-group" style="margin-left:10px">
-                <input style="margin-right:10px" type="checkbox" id="option{{ action.id }}" name="{{ action.id }}"
-                       value="{{ action.name }}">
-                {{ action.name }}
-            </div>
+                    <select id="corrective_action" name="corrective_action" multiple>
+                <option value="{{ action.name }}">{{ action.name }}</option>
+            </select>
             {% endfor %}
         </div>
     </div>
@@ -116,13 +114,12 @@
         <h5 class="mt-5" style="font-family:Monospace;text-align: center;padding-top:20px;color: #007bff;">Select
             Verifier</h5>
         <div style="padding: 10px;">
-            <label>Assign Task To</label>
-            <select class="form-control">
+            <label>Select Verifier</label>
+            <select name="select_verifier" class="form-control">
                 <option value="line_staff">Line Staff</option>
                 <option value="supervisors">Supervisors</option>
                 <option value="managers">Managers</option>
                 <option value="admin">Admin</option>
-                <!-- Add more options as needed -->
             </select>
         </div>
     </div>
@@ -148,14 +145,14 @@
 
                 // Create a new label
                 let label = document.createElement('label');
-                label.innerText = `ON${i + 1}`;
+                label.innerText = `ON`;
                 fieldWrapper.appendChild(label);
 
                 // Create a new input
                 let input = document.createElement('input');
                 input.type = 'time';
                 input.className = 'form-control';
-                input.name = `on_${i + 1}`;
+                input.name = `time_on`;
                 input.placeholder = `Enter time ${i + 1}`;
                 fieldWrapper.appendChild(input);
 

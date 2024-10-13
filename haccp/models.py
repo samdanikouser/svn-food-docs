@@ -48,10 +48,9 @@ class HaccpAdminData(models.Model):
     assign_task_to = models.CharField(max_length=200)
     repeat_every = models.IntegerField()
     repeat_frequency = models.CharField(max_length=200)
-    time_on = models.TimeField()
+    time_on = models.JSONField()
     min_temp = models.FloatField()
     max_temp = models.FloatField()
-    select_verifier = models.CharField(max_length=200)
     corrective_action = models.ManyToManyField(CorrectiveAction)
     assign_verifier = models.ManyToManyField(AssignUsers)
     created_at = models.DateTimeField(auto_now_add=True)  # Date and time field for storing the creation time
